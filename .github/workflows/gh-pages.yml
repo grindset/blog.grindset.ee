@@ -14,7 +14,7 @@ on:
       hugoVersion:
         description: "Hugo Version"
         required: false
-        default: "0.112.4"
+        default: "0.123.1"
 
 # Allow one concurrent deployment
 concurrency:
@@ -37,7 +37,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: "0.112.4"
+      HUGO_VERSION: "0.123.1"
     steps:
       - name: Check version
         if: ${{ github.event.inputs.hugoVersion }}
@@ -63,7 +63,7 @@ jobs:
             --buildDrafts --gc --verbose \
             --baseURL ${{ steps.pages.outputs.base_url }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
   # Deployment job
